@@ -11,9 +11,11 @@
 		];
 
 # Bootloader.
-	boot.loader.grub.enable = true;
-	boot.loader.grub.device = "/dev/sda";
-	boot.loader.grub.useOSProber = true;
+	boot.loader.grub = {
+		enable = true;
+		device = "/dev/sda";
+		useOSProber = true;
+	};
 
 # Setup keyfile
 	boot.initrd.secrets = {
@@ -23,15 +25,16 @@
 	boot.loader.grub.enableCryptodisk = true;
 
 	boot.initrd.luks.devices."luks-294daf6e-cb50-4686-93db-4b2496d8a054".keyFile = "/boot/crypto_keyfile.bin";
+
 	networking.hostName = "nixos"; # Define your hostname.
-	# networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+# networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
 # Configure network proxy if necessary
 # networking.proxy.default = "http://user:password@proxy:port/";
 # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
 # Enable networking
-	networking.networkmanager.enable = true;
+		networking.networkmanager.enable = true;
 
 # Set your time zone.
 	time.timeZone = "Europe/Paris";
@@ -51,6 +54,9 @@
 		LC_TIME = "fr_FR.UTF-8";
 	};
 
+# Enable flakes
+	nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
 # Nix generations garbage collection
 	nix.gc = {
 		automatic = true;
@@ -62,11 +68,30 @@
 	console.keyMap = "fr";
 
 # Window manager
-	programs.sway = {
+	programs.sway = { 
 		enable = true;
-		wrapperFeatures.gtk = true;
 	};
 
+	programs.hyprland = {
+		enable = true;
+		xwayland.enable = true;
+		withUWSM = true;
+	};
+
+	environment.sessionVariables = {
+# To fix invisible cursor
+		WLR_NO_HARDWARE_CURSORS = "1";
+# Hint Electron apps to use Wayland
+		NIXOS_OZONE_WL = "1";
+	};
+
+	hardware = {
+# OpenGL
+		graphics.enable = true;
+
+# Most Wayland compositors need this
+		nvidia.modesetting.enable = true;
+	};
 
 # Define a user account. Don't forget to set a password with ‘passwd’.
 	users.users.clement = {
@@ -83,6 +108,8 @@
 # To search, run:
 # $ nix search wget
 	environment.systemPackages = with pkgs; [
+# Compilation
+		gnumake
 # File download
 		wget
 # Text editor
@@ -92,12 +119,21 @@
 # Versioning
 			git
 
+# Home manager
+			home-manager
 # Desktop utilities
 			grim # screenshot functionality
 			slurp # screenshot functionality
 			wl-clipboard # Copy paste from stdin/stdout
 			mako # notification system
-	];
+# Browser
+			brave
+			firefox
+# Shell
+			zsh
+# Home manager
+			home-manager
+			];
 
 # Enable the gnome-keyring secret vault.
 # Will be exposed through DBus to programs willing to store secrets.
