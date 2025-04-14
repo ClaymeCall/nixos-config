@@ -46,6 +46,21 @@
     LC_TIME = "fr_FR.UTF-8";
   };
 
+  # Environment configuration
+  environment = {
+    variables = {
+      TERM = "kitty";
+      SHELL = "zsh"; #Seems to work only at user level
+    };
+
+    shellAliases = {
+      sudo = "sudo "; 
+      vim = "nvim"; 
+      nixcfg = "sudo nvim /etc/nixos"; 
+      rebuild = "sudo nixos-rebuild"; 
+    };
+  };
+
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
@@ -101,10 +116,24 @@
   programs.git.enable = true;
 
   # Text editor
-  programs.neovim.enable = true;
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+    configure.customRC = ''
+      set number relativenumber
+    '';
+  };
 
   # Shell
-  programs.zsh.enable = true;
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    syntaxHighlighting.enable = true;
+    ohMyZsh = {
+      enable = true;
+      theme = "agnoster";
+    };
+  };
 
   # Web Browser
   programs.firefox.enable = true;
@@ -121,6 +150,9 @@
 
   # Home manager
   home-manager
+
+  # Terminal emulator
+  kitty
 
   ];
 
