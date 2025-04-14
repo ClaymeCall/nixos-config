@@ -46,6 +46,9 @@
     LC_TIME = "fr_FR.UTF-8";
   };
 
+  # Enable experimental Nix features
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  
   # Environment configuration
   environment = {
     variables = {
