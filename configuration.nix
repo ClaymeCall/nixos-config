@@ -10,6 +10,11 @@
       ./vm/hardware-configuration.nix
       inputs.home-manager.nixosModules.default
     ];
+  
+  home-manager.useUserPackages = true;
+  home-manager.useGlobalPkgs = true;
+  home-manager.backupFileExtension = "backup";
+  home-manager.users.clement = import ./home.nix;
 
   # Bootloader.
   boot.loader.grub.enable = true;
@@ -85,7 +90,7 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
