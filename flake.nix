@@ -16,21 +16,21 @@
       vm = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
         modules = [
-          ./configuration.nix
+          ./vm/configuration.nix
 	  ./vm/hardware-configuration.nix
 	  inputs.home-manager.nixosModules.default
         ];
       };
 
       # Configuration for Idealis
-      # idealis = nixpkgs.lib.nixosSystem {
-      #   specialArgs = {inherit inputs;};
-      #   modules = [
-      #     ./configuration.nix
-      #     ./idealis/hardware-configuration.nix
-      #     inputs.home-manager.nixosModules.default
-      #   ];
-      # };
+      idealis = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs;};
+        modules = [
+          ./idealis/configuration.nix
+          ./idealis/hardware-configuration.nix
+          inputs.home-manager.nixosModules.default
+        ];
+      };
     };
   };
 }
