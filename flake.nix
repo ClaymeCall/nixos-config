@@ -12,12 +12,22 @@
 
   outputs = { self, nixpkgs, ... }@inputs: {
     nixosConfigurations = {
-      # Configuration for the VM
-      vm = nixpkgs.lib.nixosSystem {
+      # Configuration for the VM on Legion
+      vm_legion = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
         modules = [
-          ./vm/configuration.nix
-	  ./vm/hardware-configuration.nix
+          ./hosts/vm_legion/configuration.nix
+	  ./hosts/vm_legion/hardware-configuration.nix
+	  inputs.home-manager.nixosModules.default
+        ];
+      };
+
+      # Configuration for the VM on Ideapad
+      vm_idea = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs;};
+        modules = [
+          ./hosts/vm_idea/configuration.nix
+	  ./hosts/vm_idea/hardware-configuration.nix
 	  inputs.home-manager.nixosModules.default
         ];
       };
