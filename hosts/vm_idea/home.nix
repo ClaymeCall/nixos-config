@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   home.username = "clement";
@@ -47,11 +47,25 @@
     package = pkgs.i3-gaps;
     config = {
       modifier = "Mod4";
+      terminal = "kitty";
+
+      # Keybinds
+  keybindings = let
+    modifier = config.xsession.windowManager.i3.config.modifier;
+  in lib.mkOptionDefault {
+    "${modifier}+Return" = "exec i3-sensible-terminal";
+    "${modifier}+Shift+q" = "kill";
+    "${modifier}+d" = "exec ${pkgs.dmenu}/bin/dmenu_run";
+  };
+      # Appearance
       window = {
         titlebar = false;
         hideEdgeBorders = "smart";
       };
-      terminal = "kitty";
+
+      focus.mouseWarping = true;
+
+      # Gaps
       gaps = {
         inner = 10;
         outer = 5;
