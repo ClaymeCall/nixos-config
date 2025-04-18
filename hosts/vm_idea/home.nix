@@ -40,4 +40,27 @@
     userName  = "Clement Callejon";
     userEmail = "clement.callejon@tutanota.com";
   };
+
+  # i3 WM configuration
+  xsession.windowManager.i3 = {
+    enable = true;
+    package = pkgs.i3-gaps;
+    config = {
+      modifier = "Mod4";
+      window = {
+        titlebar = false;
+        hideEdgeBorders = "smart";
+      };
+      terminal = "kitty";
+      gaps = {
+        inner = 10;
+        outer = 5;
+      };
+      fonts = {
+        names = [ "JetBrains Mono" ];
+        style = "Bold Semi-Condensed";
+        size = 11.0;
+      };
+    };
+  };
 }
