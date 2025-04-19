@@ -159,14 +159,17 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
 
-  # Compilation
-  	gnumake
+    # Compilation
+    gnumake
 
-  # File download
-	wget
+    # File download
+    wget
 
-  # Terminal emulator
-  kitty
+    # Terminal emulator
+    kitty
+
+    # CLI File exploration
+    tree
 
   ];
 
