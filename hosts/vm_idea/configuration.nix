@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       inputs.home-manager.nixosModules.default
+      nixvim.homeManagerModules.nixvim
     ];
   
   home-manager.useUserPackages = true;

@@ -33,17 +33,33 @@
     enable = true;
     userName  = "Clement Callejon";
     userEmail = "clement.callejon@tutanota.com";
+
+    extraConfig = {
+      init.defaultBranch = "main";
+    };
   };
 
   ###################
   # CLI Environment #
   ###################
 
+  # Environment configuration
+  environment = {
+  variables = {
+    TERM = "kitty";
+    SHELL = "zsh";
+    EDITOR = "neovim";
+  };
+  
+  
   # Shell configuration
   programs.zsh = {
     enable = true;
-    shellAliases = {
-      btw = "echo i use nixos btw";
+    enableCompletion = true;
+    syntaxHighlighting.enable = true;
+    ohMyZsh = {
+      enable = true;
+      theme = "agnoster";
     };
   };
 
@@ -75,14 +91,6 @@
     extraConfig = ''
       enable_audio_bell = no
     '';
-  };
-
-  ###############
-  # Text Editor #
-  ###############
-  programs.neovim = {
-    enable = true;
-
   };
 
   #######################
@@ -167,4 +175,21 @@
       };
     };
   };
+
+
+  ###########
+  # Browser #
+  ###########
+
+  # Web browser configuration
+  programs.firefox = {
+    enable = true;
+
+    profiles = with clement; {
+      extensions.packages
+    };
+  };
+
+
+
 }
