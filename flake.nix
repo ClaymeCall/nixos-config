@@ -32,7 +32,7 @@
           ./hosts/vm_legion/configuration.nix
           ./hosts/vm_legion/hardware-configuration.nix
           inputs.home-manager.nixosModules.default
-          inputs.nvf.nixosModules.nixvim
+          inputs.nvf.nixosModules.nvf
         ];
       };
 
@@ -43,7 +43,7 @@
           ./hosts/vm_idea/configuration.nix
           ./hosts/vm_idea/hardware-configuration.nix
           inputs.home-manager.nixosModules.default
-          inputs.nvf.nixosModules.nixvim
+          inputs.nvf.nixosModules.nvf
         ];
       };
 
@@ -54,7 +54,7 @@
           ./idealis/configuration.nix
           ./idealis/hardware-configuration.nix
           inputs.home-manager.nixosModules.default
-          inputs.nvf.nixosModules.nixvim
+          inputs.nvf.nixosModules.nvf
         ];
       };
     };

@@ -8,8 +8,9 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+
+      # Include all necessary modules.
       inputs.home-manager.nixosModules.default
-      nixvim.homeManagerModules.nixvim
     ];
   
   home-manager.useUserPackages = true;
@@ -133,14 +134,8 @@
   # Versioning
   programs.git.enable = true;
 
-  # Text editor
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-    configure.customRC = ''
-      set number relativenumber
-    '';
-  };
+  # Basic text editor
+  programs.vim.enable = true;
 
   # Shell
   programs.zsh = {

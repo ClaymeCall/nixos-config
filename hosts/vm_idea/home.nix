@@ -42,22 +42,13 @@
   ###################
   # CLI Environment #
   ###################
-
-  # Environment configuration
-  environment = {
-  variables = {
-    TERM = "kitty";
-    SHELL = "zsh";
-    EDITOR = "neovim";
-  };
-  
   
   # Shell configuration
   programs.zsh = {
     enable = true;
     enableCompletion = true;
     syntaxHighlighting.enable = true;
-    ohMyZsh = {
+    oh-my-zsh = {
       enable = true;
       theme = "agnoster";
     };
@@ -91,6 +82,12 @@
     extraConfig = ''
       enable_audio_bell = no
     '';
+  };
+
+  # Editor configuration
+  programs.neovim = {
+    enable = true;
+    vimAlias = true;
   };
 
   #######################
@@ -184,12 +181,5 @@
   # Web browser configuration
   programs.firefox = {
     enable = true;
-
-    profiles = with clement; {
-      extensions.packages
-    };
   };
-
-
-
 }
