@@ -8,6 +8,8 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+
+      # Include all necessary modules.
       inputs.home-manager.nixosModules.default
     ];
   
@@ -71,16 +73,24 @@
   };
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  services.xserver = {
+    enable = true;
+    windowManager.i3.enable = true;
+    xkb = {
+      layout = "fr";
+      variant = "azerty";
+    };
+  };
 
+  services.displayManager = {
+    defaultSession = "none+i3";
+  };
   # Enable the LXQT Desktop Environment.
   services.xserver.displayManager.lightdm.enable = true;
   services.xserver.desktopManager.lxqt.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
-    layout = "fr";
-    variant = "azerty";
   };
 
   # Configure console keymap
@@ -124,14 +134,8 @@
   # Versioning
   programs.git.enable = true;
 
-  # Text editor
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-    configure.customRC = ''
-      set number relativenumber
-    '';
-  };
+  # Basic text editor
+  programs.vim.enable = true;
 
   # Shell
   programs.zsh = {
@@ -151,14 +155,17 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
 
-  # Compilation
-  	gnumake
+    # Compilation
+    gnumake
 
-  # File download
-	wget
+    # File download
+    wget
 
-  # Terminal emulator
-  kitty
+    # Terminal emulator
+    kitty
+
+    # CLI File exploration
+    tree
 
   ];
 
