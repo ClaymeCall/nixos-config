@@ -1,18 +1,21 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, lib, inputs, ... }:
-
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
 
-      # Include all necessary modules.
-      inputs.home-manager.nixosModules.default
-    ];
-  
+    # Include all necessary modules.
+    inputs.home-manager.nixosModules.default
+  ];
+
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;
   home-manager.backupFileExtension = "backup";
@@ -54,21 +57,39 @@
     LC_TIME = "fr_FR.UTF-8";
   };
 
+  # Fonts
+  fonts.packages = with pkgs; [
+    jetbrains-mono
+    nerd-fonts.jetbrains-mono
+  ];
+
   # Enable experimental Nix features
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  
+  nix.settings.experimental-features = ["nix-command" "flakes"];
+
   # Environment configuration
   environment = {
     variables = {
-      TERM = "kitty";
+      TERM = "ghostty";
       SHELL = "zsh"; #Seems to work only at user level
     };
 
     shellAliases = {
-      sudo = "sudo "; 
-      vim = "nvim"; 
-      nixcfg = "sudo nvim /etc/nixos"; 
-      rebuild = "sudo nixos-rebuild"; 
+      sudo = "sudo ";
+      vim = "nvim";
+      nixcfg = "sudo nvim /etc/nixos";
+      rebuild = "sudo nixos-rebuild";
+    };
+  };
+
+  # Shell configuration
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    syntaxHighlighting.enable = true;
+    vteIntegration = true; # Enables shell integration in tty
+    ohMyZsh = {
+      enable = true;
+      theme = "agnoster";
     };
   };
 
@@ -85,13 +106,6 @@
   services.displayManager = {
     defaultSession = "none+i3";
   };
-  # Enable the LXQT Desktop Environment.
-  services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.desktopManager.lxqt.enable = true;
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-  };
 
   # Configure console keymap
   console.keyMap = "fr";
@@ -107,8 +121,7 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
+    jack.enable = true;
 
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
@@ -122,10 +135,7 @@
   users.users.clement = {
     isNormalUser = true;
     description = "Clement";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-    #  thunderbird
-    ];
+    extraGroups = ["networkmanager" "wheel" "audio"];
   };
 
   # Allow unfree packages
@@ -137,50 +147,38 @@
   # Basic text editor
   programs.vim.enable = true;
 
-  # Shell
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-    syntaxHighlighting.enable = true;
-    ohMyZsh = {
-      enable = true;
-      theme = "agnoster";
-    };
-  };
-
   # Web Browser
   programs.firefox.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-
     # Compilation
     gnumake
+    libgcc
 
     # File download
     wget
 
     # Terminal emulator
-    kitty
+    ghostty
 
     # CLI File exploration
     tree
-
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+  programs.mtr.enable = true;
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
 
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -195,5 +193,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.11"; # Did you read the comment?
-
 }

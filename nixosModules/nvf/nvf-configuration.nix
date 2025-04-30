@@ -23,6 +23,14 @@
     ui = {
       breadcrumbs.enable = true;
       noice.enable = true;
+      borders = {
+        enable = true;
+
+        plugins = {
+          which-key.enable = true;
+          nvim-cmp.enable = true;
+        };
+      };
     };
 
     visuals = {
@@ -38,8 +46,13 @@
 
     utility = {
       sleuth.enable = true; # Auto indent-size adjust
-      yazi-nvim.enable = true; # Terminal File explorer
+      yazi-nvim = {
+        # Terminal File explorer
+        enable = true;
+        setupOpts.open_for_directories = true;
+      };
     };
+    binds.whichKey.enable = true; # Keymap helper pop-up
 
     # Parametrable fuzzy finder
     telescope = {
@@ -108,7 +121,14 @@
     debugger.nvim-dap = {
       enable = true;
       ui.enable = true;
-      mappings = {};
+      mappings = {
+        toggleBreakpoint = "<leader>db";
+        continue = "<leader>dc";
+        stepInto = "<leader>dgi";
+        restart = "<leader>dR";
+
+        toggleDapUI = "<leader>du";
+      };
     };
   };
 }
