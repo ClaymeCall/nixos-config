@@ -108,7 +108,7 @@
 
     # Appearance
     location = "center";
-    font = "JetBrains Mono";
+    font = "JetBrains Mono Nerd Font";
   };
 
   # i3 WM configuration
@@ -161,7 +161,7 @@
         outer = 5;
       };
       fonts = {
-        names = ["JetBrains Mono"];
+        names = ["JetBrains Mono Nerd Font"];
         style = "Bold Semi-Condensed";
         size = 11.0;
       };

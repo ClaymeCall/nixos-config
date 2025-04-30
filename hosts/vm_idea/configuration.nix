@@ -160,6 +160,12 @@
     # File download
     wget
 
+    # Default applications for filetypes
+    feh # Image viewer
+    zathura # PDF viewer
+    vlc # Media & video player
+    clementine # Music player
+
     # Terminal emulator
     ghostty
 
