@@ -114,6 +114,7 @@ in {
   # Desktop Environment #
   #######################
 
+  # Wallpaper configuration
   wallpaper = "wheat.png";
 
   # Picom configuration
@@ -151,6 +152,11 @@ in {
         modifier = config.xsession.windowManager.i3.config.modifier;
         terminal = config.xsession.windowManager.i3.config.terminal;
         menu = config.xsession.windowManager.i3.config.menu;
+
+        left = "h";
+        down = "j";
+        up = "k";
+        right = "l";
       in
         lib.mkOptionDefault {
           # Control keybinds
@@ -159,19 +165,32 @@ in {
           "${modifier}+d" = "exec ${menu}";
           "${modifier}+semicolon" = "exec rofimoji";
           "${modifier}+Shift+x" = "exec systemctl suspend";
+          "${modifier}+r" = "mode resize";
 
           # Focus keybinds
-          "${modifier}+h" = "focus left";
-          "${modifier}+j" = "focus down";
-          "${modifier}+k" = "focus up";
-          "${modifier}+l" = "focus right";
+          "${modifier}+${left}" = "focus left";
+          "${modifier}+${down}" = "focus down";
+          "${modifier}+${up}" = "focus up";
+          "${modifier}+${right}" = "focus right";
 
           # Window swap keybinds
-          "${modifier}+Shift+h" = "move left";
-          "${modifier}+Shift+j" = "move down";
-          "${modifier}+Shift+k" = "move up";
-          "${modifier}+Shift+l" = "move right";
+          "${modifier}+Shift+${left}" = "move left";
+          "${modifier}+Shift+${down}" = "move down";
+          "${modifier}+Shift+${up}" = "move up";
+          "${modifier}+Shift+${right}" = "move right";
         };
+      # Modes
+      modes = {
+        resize = {
+          h = "resize shrink width 10 px or 10 ppt";
+          j = "resize shrink height 10 px or 10 ppt";
+          k = "resize grow height 10 px or 10 ppt";
+          l = "resize grow width 10 px or 10 ppt";
+
+          Escape = "mode default";
+          Return = "mode default";
+        };
+      };
 
       # Appearance
       window = {
