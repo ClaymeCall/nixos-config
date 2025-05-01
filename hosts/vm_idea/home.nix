@@ -8,6 +8,10 @@
   home.homeDirectory = "/home/clement";
   home.stateVersion = "24.11";
 
+  imports = [
+    ../../homeManagerModules/wallpaper/wallpaper.nix
+  ];
+
   home.packages = with pkgs; [
     # Desktop stuff
     rofimoji
@@ -89,6 +93,8 @@
   #######################
   # Desktop Environment #
   #######################
+
+  wallpaper = "wheat.png";
 
   # Picom configuration
   services.picom = {
