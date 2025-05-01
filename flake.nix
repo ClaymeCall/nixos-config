@@ -18,7 +18,8 @@
     nvf,
     ...
   } @ inputs: {
-    packages."x86_64-linux".default =
+    # NVF Neovim config output
+    packages."x86_64-linux".nvf =
       (nvf.lib.neovimConfiguration {
         pkgs = nixpkgs.legacyPackages."x86_64-linux";
         modules = [./nixosModules/nvf/nvf-configuration.nix];
@@ -27,7 +28,7 @@
     nixosConfigurations = {
       # Configuration for the VM on Legion
       vm_legion = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
+        specialArgs = {inherit self inputs;};
         modules = [
           ./hosts/vm_legion/configuration.nix
           ./hosts/vm_legion/hardware-configuration.nix
@@ -38,7 +39,7 @@
 
       # Configuration for the VM on Ideapad
       vm_idea = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
+        specialArgs = {inherit self inputs;};
         modules = [
           ./hosts/vm_idea/configuration.nix
           ./hosts/vm_idea/hardware-configuration.nix
@@ -49,10 +50,10 @@
 
       # Configuration for Idealis
       idealis = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
+        specialArgs = {inherit self inputs;};
         modules = [
-          ./idealis/configuration.nix
-          ./idealis/hardware-configuration.nix
+          ./hosts/idealis/configuration.nix
+          ./hosts/idealis/hardware-configuration.nix
           inputs.home-manager.nixosModules.default
           inputs.nvf.nixosModules.nvf
         ];

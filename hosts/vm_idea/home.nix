@@ -1,12 +1,18 @@
 {
+  self,
   config,
   lib,
   pkgs,
   ...
-}: {
+}: let
+  nvf = self.outputs.packages."x86_64-linux".nvf;
+in {
   home.username = "clement";
   home.homeDirectory = "/home/clement";
   home.stateVersion = "24.11";
+
+  # Let Home-Manager install and manage itself
+  programs.home-manager.enable = true;
 
   imports = [
     ../../homeManagerModules/wallpaper/wallpaper.nix
@@ -15,14 +21,19 @@
   home.packages = with pkgs; [
     # Desktop stuff
     rofimoji
-    spotube
     keepassxc
-    miru
+
+    # File transfer
     localsend
+    syncthing
+
+    # Productivity
     tutanota-desktop
     obsidian
-    syncthing
     libreoffice-fresh
+
+    # Text editor
+    nvf
 
     # Maker software
     orca-slicer
@@ -32,6 +43,10 @@
     # Music production
     ardour
     guitarix
+
+    # Entertainment
+    miru
+    spotube
   ];
 
   # Git configuration
@@ -62,8 +77,8 @@
       theme = "catppuccin-mocha";
 
       # Cursor customization
-      cursor-opacity = 0.7;
       cursor-style = "bar";
+      cursor-opacity = 0.7;
 
       # Transparency customization
       background-opacity = 0.8;
@@ -120,7 +135,7 @@
   # i3 WM configuration
   xsession.windowManager.i3 = {
     enable = true;
-    package = pkgs.i3-gaps;
+    #package = pkgs.i3-gaps;
     config = {
       modifier = "Mod4";
       terminal = "ghostty";
