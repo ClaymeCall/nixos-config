@@ -20,33 +20,34 @@ in {
 
   home.packages = with pkgs; [
     # Desktop stuff
-    rofimoji
-    keepassxc
+    rofimoji # Emoji selector for rofi
+    keepassxc # Password manager
+    btop # CLI resource monitor
 
     # File transfer
-    localsend
-    syncthing
+    localsend # Airdrop alternative
+    syncthing # P2P sync over internet
 
     # Productivity
-    tutanota-desktop
-    obsidian
-    libreoffice-fresh
+    tutanota-desktop # Mail client
+    obsidian # Note taking app
+    libreoffice-fresh # Office suite
 
     # Text editor
-    nvf
+    nvf # Neovim config via nvf
 
     # Maker software
-    orca-slicer
-    openscad-unstable
-    freecad
+    orca-slicer # Slicer for 3d printer gcode
+    openscad-unstable # Code CAD software
+    freecad # GUI CAD software
 
     # Music production
-    ardour
-    guitarix
+    ardour # DAW
+    guitarix # Guitar amp simulation
 
     # Entertainment
-    miru
-    spotube
+    miru # Anime torrent streaming app
+    spotube # FOSS spotify alternative
   ];
 
   # Git configuration
@@ -96,14 +97,18 @@ in {
     };
   };
 
-  # Editor configuration
-  programs.neovim = {
-    enable = true;
-    vimAlias = true;
-  };
-
   # File Manager configuration
   programs.yazi.enable = true;
+
+  # Resource monitor configuration
+  programs.btop = {
+    enable = true;
+    settings = {
+      color_theme = "TTY";
+      theme_background = false;
+      vim_keys = true;
+    };
+  };
 
   #######################
   # Desktop Environment #
