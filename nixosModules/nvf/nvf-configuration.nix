@@ -1,8 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
+{pkgs, ...}: {
   vim = {
     globals.mapleader = " ";
     options.shiftwidth = 2;
@@ -59,12 +55,12 @@
       enable = true;
       mappings = {
         # File navigation
-        findFiles = "<leader>ff";
-        liveGrep = "<leader>fg";
+        findFiles = "<leader>sf";
+        liveGrep = "<leader>sg";
 
         # Git navigation
-        gitCommits = "<leader>sgc";
-        gitStatus = "<leader>sgs";
+        gitCommits = "<leader>gc";
+        gitStatus = "<leader>gs";
 
         # LSP navigation
         lspDefinitions = "<leader>gd";
