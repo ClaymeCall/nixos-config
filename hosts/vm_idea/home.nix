@@ -47,6 +47,7 @@ in {
 
     # Entertainment
     miru # Anime torrent streaming app
+    legcord # Pricavy friendly Discord client
     spotube # FOSS spotify alternative
   ];
 
