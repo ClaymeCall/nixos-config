@@ -10,6 +10,7 @@ in {
   home.username = "clement";
   home.homeDirectory = "/home/clement";
   home.stateVersion = "24.11";
+  home.keyboard.layout = "fr";
 
   # Let Home-Manager install and manage itself
   programs.home-manager.enable = true;
@@ -127,16 +128,23 @@ in {
     fadeSteps = [0.03 0.03];
     fadeDelta = 2;
 
-    inactiveOpacity = 0.7;
+    inactiveOpacity = 0.9;
+    menuOpacity = 1;
   };
 
   # Rofi launcher configuration
+
   programs.rofi = {
     enable = true;
 
     # Appearance
-    location = "center";
-    font = "JetBrains Mono Nerd Font";
+    theme = "${config.home.homeDirectory}/.config/rofi/theme.rasi";
+    #location = "center";
+    #font = "JetBrains Mono Nerd Font 10";
+  };
+
+  home.file."${config.home.homeDirectory}/.config/rofi/theme.rasi" = {
+    source = ../../homeManagerModules/rofi/theme.rasi;
   };
 
   # i3 WM configuration
