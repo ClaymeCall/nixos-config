@@ -22,7 +22,7 @@
     packages."x86_64-linux".nvf =
       (nvf.lib.neovimConfiguration {
         pkgs = nixpkgs.legacyPackages."x86_64-linux";
-        modules = [./nixosModules/nvf/nvf-configuration.nix];
+        modules = [./modules/nvf/nvf-configuration.nix];
       }).neovim;
 
     nixosConfigurations = {
