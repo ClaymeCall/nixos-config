@@ -8,9 +8,9 @@
   # CLI Environment #
   ###################
   imports = [
-    ./ghostty/ghostty.nix
-    ./git/git.nix
-    ./yazi/yazi.nix
-    ./btop/btop.nix
+    ./programs/ghostty.nix
+    ./programs/git.nix
+    ./programs/yazi.nix
+    ./programs/btop.nix
   ];
 }

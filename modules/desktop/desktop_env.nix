@@ -9,11 +9,11 @@
   #######################
   imports = [
     ./wallpaper/wallpaper.nix
-    ./rofi/rofi.nix
-    ./picom/picom.nix
-    ./i3/i3.nix
+    ./programs/rofi/rofi.nix
+    ./programs/picom.nix
+    ./programs/i3.nix
   ];
 
   # Wallpaper configuration
-  wallpaper = "wheat.png";
+  wallpaper = "pompeii.png";
 }
