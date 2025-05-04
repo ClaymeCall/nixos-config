@@ -24,6 +24,7 @@ in {
     rofimoji # Emoji selector for rofi
     keepassxc # Password manager
     btop # CLI resource monitor
+    mullvad-vpn # Mullvad VPN client
 
     # File transfer
     localsend # Airdrop alternative
