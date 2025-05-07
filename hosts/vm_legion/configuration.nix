@@ -2,12 +2,13 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
-  config,
+  self,
   pkgs,
-  lib,
   inputs,
   ...
-}: {
+}: let
+  nvf = self.outputs.packages."x86_64-linux".nvf;
+in {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -20,6 +21,7 @@
   home-manager.useGlobalPkgs = true;
   home-manager.backupFileExtension = "backup";
   home-manager.users.clement = import ./home.nix;
+  home-manager.extraSpecialArgs = {inherit self inputs;};
 
   # Bootloader.
   boot.loader.grub.enable = true;
@@ -144,9 +146,6 @@
   # Versioning
   programs.git.enable = true;
 
-  # Basic text editor
-  programs.vim.enable = true;
-
   # Web Browser
   programs.firefox.enable = true;
 
@@ -160,11 +159,21 @@
     # File download
     wget
 
+    # Default applications for filetypes
+    feh # Image viewer
+    zathura # PDF viewer
+    vlc # Media & video player
+    clementine # Music player
+
     # Terminal emulator
     ghostty
 
+    # Text editor
+    nvf
+
     # CLI File exploration
     tree
+    yazi
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
