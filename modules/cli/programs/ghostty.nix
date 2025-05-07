@@ -1,37 +1,45 @@
 {
   lib,
   config,
-  pkgs,
   ...
 }: {
-  programs.ghostty = {
-    enable = true;
+  # Ghostty terminal emulator configuration
 
-    settings = {
-      # Font customization
-      font-family = "JetBrains Mono Nerd Font";
-      font-size = 13;
+  options = {
+    ghostty.enable =
+      lib.mkEnableOption "enables ghostty";
+  };
 
-      # Color theme
-      theme = "catppuccin-mocha";
+  config = lib.mkIf config.ghostty.enable {
+    programs.ghostty = {
+      enable = true;
 
-      # Cursor customization
-      cursor-style = "bar";
-      cursor-opacity = 0.7;
+      settings = {
+        # Font customization
+        font-family = "JetBrains Mono Nerd Font";
+        font-size = 13;
 
-      # Transparency customization
-      background-opacity = 0.8;
-      background-blur = true;
+        # Color theme
+        theme = "catppuccin-mocha";
 
-      # Clipboard settings
-      clipboard-read = "ask";
-      clipboard-write = "allow";
+        # Cursor customization
+        cursor-style = "bar";
+        cursor-opacity = 0.7;
 
-      # Other
-      window-decoration = "none";
-      desktop-notifications = true;
-      resize-overlay = "never";
-      link-url = true;
+        # Transparency customization
+        background-opacity = 0.8;
+        background-blur = true;
+
+        # Clipboard settings
+        clipboard-read = "ask";
+        clipboard-write = "allow";
+
+        # Other
+        window-decoration = "none";
+        desktop-notifications = true;
+        resize-overlay = "never";
+        link-url = true;
+      };
     };
   };
 }

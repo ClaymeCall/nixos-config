@@ -1,17 +1,24 @@
 {
   lib,
   config,
-  pkgs,
   ...
 }: {
-  # Git configuration
-  programs.git = {
-    enable = true;
-    userName = "Clement Callejon";
-    userEmail = "clement.callejon@tutanota.com";
+  # Git client configuration
 
-    extraConfig = {
-      init.defaultBranch = "main";
+  options = {
+    git.enable =
+      lib.mkEnableOption "enables git";
+  };
+
+  config = lib.mkIf config.git.enable {
+    programs.git = {
+      enable = true;
+      userName = "Clement Callejon";
+      userEmail = "clement.callejon@tutanota.com";
+
+      extraConfig = {
+        init.defaultBranch = "main";
+      };
     };
   };
 }
