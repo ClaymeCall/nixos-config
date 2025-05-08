@@ -8,18 +8,13 @@
   # Desktop Environment #
   #######################
   imports = [
-    ./wallpaper/wallpaper.nix
-    ./programs/rofi/rofi.nix
-    ./programs/rofi/rofimoji.nix
-    ./programs/picom.nix
-    ./programs/i3.nix
+    ./submodules/wallpaper/wallpaper.nix
+    ./submodules/i3-suite.nix
   ];
 
   # Wallpaper configuration
   wallpaper.file = "pompeii.png";
 
-  rofi.enable = true;
-  rofimoji.enable = true;
-  i3.enable = true;
-  picom.enable = true;
+  # Window manager
+  i3-suite.enable = true;
 }

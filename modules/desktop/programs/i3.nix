@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }: {
   # i3 WM configuration
@@ -13,7 +14,7 @@
   config = lib.mkIf config.i3.enable {
     xsession.windowManager.i3 = {
       enable = true;
-      #package = pkgs.i3-gaps;
+      package = pkgs.i3-gaps;
       config = {
         modifier = "Mod4";
         terminal = "ghostty";
