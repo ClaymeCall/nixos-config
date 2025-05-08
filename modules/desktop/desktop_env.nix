@@ -10,6 +10,7 @@
   imports = [
     ./wallpaper/wallpaper.nix
     ./programs/rofi/rofi.nix
+    ./programs/rofi/rofimoji.nix
     ./programs/picom.nix
     ./programs/i3.nix
   ];
@@ -18,6 +19,7 @@
   wallpaper.file = "pompeii.png";
 
   rofi.enable = true;
+  rofimoji.enable = true;
   i3.enable = true;
   picom.enable = true;
 }
