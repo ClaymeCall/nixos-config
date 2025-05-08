@@ -3,13 +3,14 @@
   config,
   ...
 }: {
-  options.wallpaper = lib.mkOption {
+  # Wallpaper selector config
+  options.wallpaper.file = lib.mkOption {
     default = null;
     type = with lib.types; nullOr str;
-    description = "Relative path to the wallpaper image to be linked at ~/.background-image";
+    description = "Name of the wallpaper image file to be linked at ~/.background-image";
   };
 
-  config = lib.mkIf (config.wallpaper != null) {
-    home.file.".background-image".source = ./. + "/${config.wallpaper}";
+  config = lib.mkIf (config.wallpaper.file != null) {
+    home.file.".background-image".source = ./. + "/${config.wallpaper.file}";
   };
 }

@@ -15,5 +15,9 @@
   ];
 
   # Wallpaper configuration
-  wallpaper = "pompeii.png";
+  wallpaper.file = "pompeii.png";
+
+  rofi.enable = true;
+  i3.enable = true;
+  picom.enable = true;
 }

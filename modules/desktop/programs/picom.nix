@@ -1,19 +1,25 @@
 {
   lib,
   config,
-  pkgs,
   ...
 }: {
   # Picom configuration
-  services.picom = {
-    enable = true;
-    vSync = true;
+  options = {
+    picom.enable =
+      lib.mkEnableOption "Enables Picom compositor";
+  };
 
-    fade = true;
-    fadeSteps = [0.03 0.03];
-    fadeDelta = 2;
+  config = lib.mkIf config.picom.enable {
+    services.picom = {
+      enable = true;
+      vSync = true;
 
-    inactiveOpacity = 0.9;
-    menuOpacity = 1;
+      fade = true;
+      fadeSteps = [0.03 0.03];
+      fadeDelta = 2;
+
+      inactiveOpacity = 0.9;
+      menuOpacity = 1;
+    };
   };
 }
