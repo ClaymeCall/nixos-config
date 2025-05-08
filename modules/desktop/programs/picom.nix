@@ -4,9 +4,10 @@
   ...
 }: {
   # Picom configuration
+
   options = {
     picom.enable =
-      lib.mkEnableOption "Enables Picom compositor";
+      lib.mkEnableOption "Whether to enable Picom compositor";
   };
 
   config = lib.mkIf config.picom.enable {

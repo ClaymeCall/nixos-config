@@ -3,10 +3,10 @@
   config,
   ...
 }: {
-  # Web browser configuration
+  # Firefox Web browser configuration
   options = {
     firefox.enable =
-      lib.mkEnableOption "Enables Firefox";
+      lib.mkEnableOption "Whether to enable Firefox";
   };
 
   config = lib.mkIf config.firefox.enable {

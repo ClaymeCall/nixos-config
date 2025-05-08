@@ -4,9 +4,10 @@
   ...
 }: {
   # i3 WM configuration
+
   options = {
     i3.enable =
-      lib.mkEnableOption "Enables i3 WM";
+      lib.mkEnableOption "Whether to enable i3 WM";
   };
 
   config = lib.mkIf config.i3.enable {

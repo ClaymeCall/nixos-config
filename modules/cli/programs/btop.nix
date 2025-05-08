@@ -8,7 +8,7 @@
 
   options = {
     btop.enable =
-      lib.mkEnableOption "enables btop";
+      lib.mkEnableOption "Whether to enable btop";
   };
 
   config = lib.mkIf config.btop.enable {

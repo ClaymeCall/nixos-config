@@ -4,9 +4,10 @@
   ...
 }: {
   # Rofi launcher configuration
+
   options = {
     rofi.enable =
-      lib.mkEnableOption "Enables rofi";
+      lib.mkEnableOption "Whether to enable rofi";
   };
 
   config = lib.mkIf config.rofi.enable {

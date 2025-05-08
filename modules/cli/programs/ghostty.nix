@@ -7,7 +7,7 @@
 
   options = {
     ghostty.enable =
-      lib.mkEnableOption "enables ghostty";
+      lib.mkEnableOption "Whether to enable ghostty";
   };
 
   config = lib.mkIf config.ghostty.enable {

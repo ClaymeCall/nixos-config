@@ -7,7 +7,7 @@
 
   options = {
     git.enable =
-      lib.mkEnableOption "enables git";
+      lib.mkEnableOption "Whether to enable git";
   };
 
   config = lib.mkIf config.git.enable {

@@ -5,6 +5,7 @@
   ...
 }: {
   # Neovim configuration via nvf
+
   vim = {
     globals.mapleader = " ";
     options.shiftwidth = 2;
