@@ -26,23 +26,12 @@
       }).neovim;
 
     nixosConfigurations = {
-      # Configuration for the VM on Legion
-      vm_legion = nixpkgs.lib.nixosSystem {
+      # Configuration for VMs
+      vm = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit self inputs;};
         modules = [
-          ./hosts/vm_legion/configuration.nix
-          ./hosts/vm_legion/hardware-configuration.nix
-          inputs.home-manager.nixosModules.default
-          inputs.nvf.nixosModules.nvf
-        ];
-      };
-
-      # Configuration for the VM on Ideapad
-      vm_idea = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit self inputs;};
-        modules = [
-          ./hosts/vm_idea/configuration.nix
-          ./hosts/vm_idea/hardware-configuration.nix
+          ./hosts/vm/configuration.nix
+          ./hosts/vm/hardware-configuration.nix
           inputs.home-manager.nixosModules.default
           inputs.nvf.nixosModules.nvf
         ];
