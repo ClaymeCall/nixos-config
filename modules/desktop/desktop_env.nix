@@ -8,6 +8,7 @@
     ./submodules/office-tools.nix
     ./submodules/maker-software.nix
     ./submodules/music-production.nix
+    ./submodules/file-transfer.nix
     ./submodules/entertainment.nix
   ];
 
@@ -25,6 +26,9 @@
 
   # Music production software
   music-production.enable = true;
+
+  # File transfer software
+  file-transfer.enable = true;
 
   # Entertainment software
   entertainment.enable = true;

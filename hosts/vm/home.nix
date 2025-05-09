@@ -15,21 +15,14 @@ in {
   # Let Home-Manager install and manage itself
   programs.home-manager.enable = true;
 
+  # Import custom modules
   imports = [
     ../../modules/cli/cli_env.nix
     ../../modules/desktop/desktop_env.nix
   ];
 
+  # Packages not fitting in any module
   home.packages = with pkgs; [
-    # File transfer
-    #localsend # Airdrop alternative
-    #syncthing # P2P sync over internet
-
-    # Productivity
-    #tutanota-desktop # Mail client
-    #obsidian # Note taking app
-    #libreoffice-fresh # Office suite
-
     # Text editor
     nvf # Neovim config via nvf
   ];
