@@ -35,11 +35,6 @@ in {
     #obsidian # Note taking app
     #libreoffice-fresh # Office suite
 
-    # Maker software
-    #orca-slicer # Slicer for 3D printer gcode
-    #openscad-unstable # Code CAD software
-    #freecad # GUI CAD software
-
     # Music production
     #ardour # DAW
     #guitarix # Guitar amp simulation
