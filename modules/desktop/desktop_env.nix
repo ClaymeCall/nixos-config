@@ -11,6 +11,7 @@
     ./submodules/wallpaper/wallpaper.nix
     ./submodules/i3-suite.nix
     ./submodules/maker-software.nix
+    ./submodules/entertainment.nix
   ];
 
   # Wallpaper configuration
@@ -21,4 +22,7 @@
 
   # Maker Software
   maker-software.enable = true;
+
+  # Entertainment Software
+  entertainment.enable = true;
 }
