@@ -7,11 +7,11 @@
   # Tutanota Desktop client configuration
 
   options = {
-    tutanota-desktop.enable =
+    tutanota.enable =
       lib.mkEnableOption "Whether to enable tutanota-desktop";
   };
 
-  config = lib.mkIf config.tutanota-desktop.enable {
+  config = lib.mkIf config.tutanota.enable {
     home.packages = with pkgs; [
       tutanota-desktop
     ];

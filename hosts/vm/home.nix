@@ -21,11 +21,6 @@ in {
   ];
 
   home.packages = with pkgs; [
-    # Desktop stuff
-    #rofimoji # Emoji selector for rofi
-    #keepassxc # Password manager
-    #mullvad-vpn # Mullvad VPN client
-
     # File transfer
     #localsend # Airdrop alternative
     #syncthing # P2P sync over internet
@@ -34,15 +29,6 @@ in {
     #tutanota-desktop # Mail client
     #obsidian # Note taking app
     #libreoffice-fresh # Office suite
-
-    # Music production
-    #ardour # DAW
-    #guitarix # Guitar amp simulation
-
-    # Entertainment
-    #miru # Anime torrent streaming app
-    #legcord # Privacy friendly Discord client
-    #spotube # FOSS spotify alternative
 
     # Text editor
     nvf # Neovim config via nvf
