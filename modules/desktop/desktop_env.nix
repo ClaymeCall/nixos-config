@@ -11,6 +11,7 @@
     ./submodules/wallpaper/wallpaper.nix
     ./submodules/i3-suite.nix
     ./submodules/maker-software.nix
+    ./submodules/music-production.nix
     ./submodules/entertainment.nix
   ];
 
@@ -23,6 +24,9 @@
   # Maker Software
   maker-software.enable = true;
 
-  # Entertainment Software
+  # Music production software
+  music-production.enable = true;
+
+  # Entertainment software
   entertainment.enable = true;
 }
