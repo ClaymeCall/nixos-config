@@ -27,16 +27,25 @@
 
     nixosConfigurations = {
       # Configuration for VMs
-      vm = nixpkgs.lib.nixosSystem {
+      vm_vb = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit self inputs;};
         modules = [
-          ./hosts/vm/configuration.nix
-          ./hosts/vm/hardware-configuration.nix
+          ./hosts/vm_vb/configuration.nix
+          ./hosts/vm_vb/hardware-configuration.nix
           inputs.home-manager.nixosModules.default
           inputs.nvf.nixosModules.nvf
         ];
       };
 
+      vm_qemu = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit self inputs;};
+        modules = [
+          ./hosts/vm_qemu/configuration.nix
+          ./hosts/vm_qemu/hardware-configuration.nix
+          inputs.home-manager.nixosModules.default
+          inputs.nvf.nixosModules.nvf
+        ];
+      };
       # Configuration for Idealis
       idealis = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit self inputs;};
