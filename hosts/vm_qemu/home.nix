@@ -12,6 +12,17 @@ in {
   home.stateVersion = "24.11";
   home.keyboard.layout = "fr";
 
+  # Define session variables
+  home.sessionVariables = {
+    TERMINAL = "ghostty";
+    MENU = "rofi -show drun";
+    EMOJI_SELECTOR = "rofimoji";
+    COLOR_PICKER = "hyprpicker -a";
+    SCREENSHOT = "grimblast";
+    LOCKSCREEN = "swaylock";
+    STATUS_BAR = "waybar";
+  };
+
   # Let Home-Manager install and manage itself
   programs.home-manager.enable = true;
 

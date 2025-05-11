@@ -5,6 +5,7 @@
   imports = [
     ./submodules/wallpaper/wallpaper.nix
     ./submodules/i3-suite.nix
+    ./submodules/hyprland-suite.nix
     ./submodules/office-tools.nix
     ./submodules/maker-software.nix
     ./submodules/music-production.nix
@@ -12,11 +13,14 @@
     ./submodules/entertainment.nix
   ];
 
+  # Enable media controls
+  services.playerctld.enable = true;
+
   # Wallpaper configuration
   wallpaper.file = "pompeii.png";
 
-  # Window manager
-  i3-suite.enable = true;
+  # Window manager/Desktop environment
+  hyprland-suite.enable = true;
 
   # Office & productivity tools
   office-tools.enable = true;

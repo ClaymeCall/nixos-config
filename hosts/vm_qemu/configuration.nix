@@ -95,7 +95,7 @@ in {
     };
   };
 
-  # Enable the X11 windowing system.
+  # Enable the X11 windowing system with i3.
   services.xserver = {
     enable = true;
     windowManager.i3.enable = true;
@@ -105,8 +105,15 @@ in {
     };
   };
 
+  # Enable the Hyprland.
+  programs.hyprland = {
+    enable = true;
+    #withUWSM = true;
+  };
+
   services.displayManager = {
-    defaultSession = "none+i3";
+    defaultSession = "hyprland";
+    ly.enable = true;
   };
 
   # Configure console keymap
@@ -152,6 +159,8 @@ in {
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    # Virtual machine guest/host interaction
+    spice-vdagent
     # Compilation
     gnumake
     libgcc
