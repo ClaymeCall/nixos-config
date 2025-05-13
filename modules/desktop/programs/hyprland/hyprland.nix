@@ -10,7 +10,7 @@
   colorPicker = config.home.sessionVariables.COLOR_PICKER;
   screenshot = config.home.sessionVariables.SCREENSHOT;
   lockscreen = config.home.sessionVariables.LOCKSCREEN;
-  status_bar = config.home.sessionVariables.STATUS_BAR;
+  # status_bar = config.home.sessionVariables.STATUS_BAR; # Managed by systemd
 in {
   # Hyprland configuration
 
@@ -176,7 +176,7 @@ in {
           "hyprctl setcursor Bibata-cursors 24"
 
           # Start status bar
-          "${status_bar}"
+          # "${status_bar}" # Managed by systemd
         ];
 
         misc = {

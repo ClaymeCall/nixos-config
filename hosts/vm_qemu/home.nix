@@ -19,7 +19,7 @@ in {
     EMOJI_SELECTOR = "rofimoji";
     COLOR_PICKER = "hyprpicker -a";
     SCREENSHOT = "grimblast";
-    LOCKSCREEN = "swaylock";
+    LOCKSCREEN = "hyprlock";
     STATUS_BAR = "waybar";
   };
 

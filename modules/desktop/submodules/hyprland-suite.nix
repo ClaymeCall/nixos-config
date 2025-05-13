@@ -14,6 +14,7 @@
     ../programs/grimblast.nix
     ../programs/hyprpicker.nix
     ../programs/swaylock.nix
+    ../programs/hyprlock.nix
     ../programs/swaybg.nix
     ../programs/waybar.nix
     ../programs/wl-clipboard.nix
@@ -36,7 +37,7 @@
     rofimoji.enable = true; # Emoji selector
     grimblast.enable = true; # Screenshot tool
     hyprpicker.enable = true; # Color picker tool
-    swaylock.enable = true; # Screenlock tool
+    hyprlock.enable = true; # Screenlock tool
     swaybg.enable = true; # Wallpaper setter
     waybar.enable = true; # Status bar
     nwg-look.enable = true; # GTK3 settings editor

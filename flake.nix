@@ -19,11 +19,21 @@
     ...
   } @ inputs: {
     # NVF Neovim config output
-    packages."x86_64-linux".nvf =
+    packages.x86_64-linux.nvf =
       (nvf.lib.neovimConfiguration {
-        pkgs = nixpkgs.legacyPackages."x86_64-linux";
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
         modules = [./modules/cli/programs/nvf.nix];
       }).neovim;
+
+    # NVF Neovim config output for WSL
+    packages.x86_64-linux.nvf_wsl =
+      (nvf.lib.neovimConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        modules = [./modules/cli/programs/nvf.nix];
+      }).neovim;
+
+    # Optional default
+    defaultPackage.x86_64-linux = self.packages.x86_64-linux.nvf_wsl;
 
     nixosConfigurations = {
       # Configuration for VMs
